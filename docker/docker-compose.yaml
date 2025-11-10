@@ -1,0 +1,12 @@
+services:
+  web-otp:
+    container_name: web-otp
+    image: "ghcr.io/malonzhao/web-otp:latest"
+    environment:
+      - ENCRYPTION_KEY=abcdefghijklmnopqrstuvwxyz123456
+      - JWT_SECRET=web_otp_secret_key
+      - JWT_REFRESH_SECRET=web_otp_refresh_secret_key
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/root/.otp

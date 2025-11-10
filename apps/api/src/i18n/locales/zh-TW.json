@@ -1,0 +1,41 @@
+{
+  "auth": {
+    "invalid_credentials": "用戶名或密碼錯誤",
+    "username_already_exists": "用戶名已存在",
+    "user_not_found": "用戶不存在",
+    "invalid_token": "無效的令牌",
+    "token_expired": "令牌已過期",
+    "password_updated": "密碼更新成功",
+    "invalid_current_password": "當前密碼錯誤",
+    "password_too_weak": "密碼強度不足"
+  },
+  "platforms": {
+    "not_found": "平台不存在",
+    "already_exists": "平台已存在",
+    "created": "平台創建成功",
+    "updated": "平台更新成功",
+    "deleted": "平台刪除成功"
+  },
+  "user_platforms": {
+    "not_found": "用戶平台不存在",
+    "already_exists": "用戶平台已存在",
+    "created": "用戶平台創建成功",
+    "updated": "用戶平台更新成功",
+    "deleted": "用戶平台刪除成功",
+    "invalid_otp": "無效的OTP驗證碼"
+  },
+  "users": {
+    "not_found": "用戶不存在",
+    "username_already_exists": "用戶名已存在",
+    "created": "用戶創建成功",
+    "updated": "用戶更新成功",
+    "deleted": "用戶刪除成功"
+  },
+  "common": {
+    "internal_server_error": "伺服器內部錯誤",
+    "validation_error": "驗證錯誤",
+    "unauthorized": "未授權",
+    "forbidden": "禁止訪問",
+    "not_found": "資源不存在"
+  }
+}

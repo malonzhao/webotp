@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebOTP</title>
+    <!-- 主题防闪烁脚本 -->
+    <script>
+      // 在页面加载前检测系统主题并应用，防止主题闪烁
+      (function() {
+        try {
+          const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          // 清除所有可能的主题类，然后添加正确的类
+          document.documentElement.classList.remove('light', 'dark');
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.add('light');
+          }
+        } catch (e) {
+          console.warn('主题检测失败:', e);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+name: Release and Containerization
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Determine version bump
+        id: version
+        run: |
+          COMMITS=$(git log -1 --pretty=%B)
+          if [[ "$COMMITS" == *"BREAKING CHANGE"* ]]; then
+            echo "version_type=major" >> $GITHUB_ENV
+          elif [[ "$COMMITS" == *feat* ]]; then
+            echo "version_type=minor" >> $GITHUB_ENV
+          elif [[ "$COMMITS" == *fix* ]]; then
+            echo "version_type=patch" >> $GITHUB_ENV
+          else
+            echo "version_type=patch" >> $GITHUB_ENV
+          fi
+          echo "Detected version bump: $version_type"
+
+      - name: Bump versions in subprojects
+        run: |
+          npm version ${{ env.version_type }} --no-git-tag-version
+          echo "APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - name: Commit version bump
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore(release): bump ${{ env.version_type }} version [skip ci]" || echo "No changes to commit"
+          git push origin HEAD:main
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🔹 Build unified multi-arch image
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          provenance: false
+          tags: |
+            ghcr.io/${{ github.repository }}:v${{ env.APP_VERSION }}
+            ghcr.io/${{ github.repository }}:latest
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.APP_VERSION }}
+          release_name: Release v${{ env.APP_VERSION }}
+          draft: false
+          prerelease: false

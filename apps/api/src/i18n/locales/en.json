@@ -1,0 +1,41 @@
+{
+  "auth": {
+    "invalid_credentials": "Invalid username or password",
+    "username_already_exists": "Username already exists",
+    "user_not_found": "User not found",
+    "invalid_token": "Invalid token",
+    "token_expired": "Token expired",
+    "password_updated": "Password updated successfully",
+    "invalid_current_password": "Invalid current password",
+    "password_too_weak": "Password is too weak"
+  },
+  "platforms": {
+    "not_found": "Platform not found",
+    "already_exists": "Platform already exists",
+    "created": "Platform created successfully",
+    "updated": "Platform updated successfully",
+    "deleted": "Platform deleted successfully"
+  },
+  "user_platforms": {
+    "not_found": "User platform not found",
+    "already_exists": "User platform already exists",
+    "created": "User platform created successfully",
+    "updated": "User platform updated successfully",
+    "deleted": "User platform deleted successfully",
+    "invalid_otp": "Invalid OTP code"
+  },
+  "users": {
+    "not_found": "User not found",
+    "username_already_exists": "Username already exists",
+    "created": "User created successfully",
+    "updated": "User updated successfully",
+    "deleted": "User deleted successfully"
+  },
+  "common": {
+    "internal_server_error": "Internal server error",
+    "validation_error": "Validation error",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "not_found": "Resource not found"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@web-otp/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Frontend for Web OTP",
+  "license": "MIT",
+  "author": "Malon",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "jest",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --config .eslintrc.cjs",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --config .eslintrc.cjs --fix"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "axios": "^1.12.2",
+    "date-fns": "^4.1.0",
+    "i18next": "^25.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-i18next": "^15.3.0",
+    "react-router-dom": "^7.9.2",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@types/jest": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@vitejs/plugin-react": "^5.0.3",
+    "autoprefixer": "^10.4.21",
+    "eslint": "catalog:",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.21",
+    "jest": "catalog:",
+    "postcss": "^8.5.6",
+    "prettier": "catalog:",
+    "tailwindcss": "^3.4.17",
+    "ts-jest": "catalog:",
+    "ts-loader": "catalog:",
+    "ts-node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "^7.1.7"
+  }
+}

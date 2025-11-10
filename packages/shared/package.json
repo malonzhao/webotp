@@ -1,0 +1,17 @@
+{
+  "name": "@web-otp/shared",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared types, utilities and constants for Web OTP",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web-otp",
+    "shared"
+  ],
+  "author": "",
+  "license": "MIT"
+}
